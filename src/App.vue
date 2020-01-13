@@ -2,7 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     
-    <Test/>
+    <Test msg="Hola desde componente padre!"/>
     <h1>Hola mundo</h1>
   </div>
 </template>

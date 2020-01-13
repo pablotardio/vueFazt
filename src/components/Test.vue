@@ -2,7 +2,8 @@
   <div>
     <input type="text" v-model="user.firstName" v-on:keyup="tecleando" />
     <button type="button" v-on:click="saludar(user.firstName)">Saludos</button>
-    <div> {{fullName}} Propiedadd computada</div>
+    <div>{{fullName}} Propiedadd computada</div>
+    <div>Mensaje: {{msg}}</div>
     <div v-text="title"></div>
 
     <div v-html="myHtml">{{ myHtml }}</div>
@@ -49,6 +50,11 @@ export default {
   computed: {
     fullName() {
       return this.user.firstName + " " + this.user.lastname;
+    }
+  },
+  props: {
+    msg: {
+      type: String
     }
   }
 };
