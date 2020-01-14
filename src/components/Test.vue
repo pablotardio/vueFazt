@@ -3,7 +3,7 @@
     <input type="text" v-model="user.firstName" v-on:keyup="tecleando" />
     <button type="button" v-on:click="saludar(user.firstName)">Saludos</button>
     <div>{{fullName}} Propiedadd computada</div>
-    <div>Mensaje: {{msg}}</div>
+    <div class="testTextoPadre">Mensaje: {{msg}}</div>
     <div v-text="title"></div>
 
     <div v-html="myHtml">{{ myHtml }}</div>
@@ -54,8 +54,15 @@ export default {
   },
   props: {
     msg: {
-      type: String
+      type: String,
+      default: "Mensaje por defecto"
     }
   }
 };
 </script>
+
+<style media="screen"  >
+    .testTextoPadre{
+        background: rgb(128, 218, 163);
+    }
+</style>
