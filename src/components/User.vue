@@ -2,15 +2,16 @@
   <div class="usersClass">
     <h1>Usuario</h1>
     <ul>
-      <li class="liUsers" v-for="user in users">{{user.name}} - {{user.email}} 
-          <button v-on:click="deleteUser(user)"> X</button> </li>
-         
+      <li class="liUsers" v-for="user in users">
+        {{user.name}} - {{user.email}}
+        <button v-on:click="deleteUser(user)">X</button>
+      </li>
     </ul>
 
     <form action v-on:submit.prevent="addUser">
-    <input type="text" v-model="newUser.name" placeholder="Name">
-    <input type="email" v-model="newUser.email" placeholder="Email">
-    <button type="submit">Add</button>
+      <input type="text" v-model="newUser.name" placeholder="Name" />
+      <input type="email" v-model="newUser.email" placeholder="Email" />
+      <button type="submit">Add</button>
     </form>
   </div>
 </template>
@@ -35,20 +36,27 @@ export default {
           contacted: "false"
         }
       ],
-      newUser:{}
+      newUser: {}
     };
   },
-  methods:{
-      addUser(e){
-          //e.preventDefault();
-          this.users.push(this.newUser);
-          this.newUser={};
-          console.log("Añadiendo Usuario",this.newUser);
-      },
-      deleteUser(user){
-          this.users.splice(this.users.indexOf(user),1);
-      }
-  }
+  methods: {
+    addUser(e) {
+      //e.preventDefault();
+      this.users.push(this.newUser);
+      this.newUser = {};
+      console.log("Añadiendo Usuario", this.newUser);
+    },
+    deleteUser(user) {
+      this.users.splice(this.users.indexOf(user), 1);
+    },
+    
+  },
+  created() {
+        console.log("Componente User Creado");
+        this.$http.get('https://jsonplaceholder.typicode.com/users').then(res=> console.log(res));
+           this.$http.get('https://jsonplaceholder.typicode.com/users').then(res=> this.users=res.body);
+    
+    }
 };
 </script>
 <style lang="">
